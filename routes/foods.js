@@ -1,12 +1,11 @@
 const express = require("express"); 
 const router = express.Router();
-const foods = require("../foods.json");
 
 //route
 router.get("/", (req, res) => {
     const { dishTypes, num } = req.query;
   
-    let _foods = [...foods.recipes];
+    let _foods = [...req.foods.recipes];
   
     // if specific quantity is asked for
   

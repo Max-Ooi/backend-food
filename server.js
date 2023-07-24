@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
+const foods = require("./foods.json");
 const auth = require("./middleware/apiauth");
+
+app.use((req, res, next) => {
+  req.foods = foods;
+  next();
+});
 
 //api key validation middleware
 app.use(auth);
