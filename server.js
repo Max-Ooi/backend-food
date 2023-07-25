@@ -12,7 +12,8 @@ app.use((req, res, next) => {
 app.use(auth);
 
 //route middleware
-app.use("/foods", require("./routes/foods"));
+app.use("/get", require("./routes/get"));
+
 
 const port = process.env.PORT || 6001;
 app.listen(6001, () => {
