@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   const { dishTypes, num } = req.query;
 
-  let _foods = [...req.foods.recipes];
+  let _foods = [...req.foods];
 
   // if specific dishTypes is asked for
 
@@ -22,16 +22,18 @@ router.get("/", (req, res) => {
   res.send(_foods);
 });
 
-router.get("/:id", (req, res) => {
+router.get("/food/:id", (req, res) => {
+  
   const id = Number(req.params.id);
 
   // defensive check
   if (Number.isNaN(id)) {
     res.send({ status: 0, reason: "Invalid ID" });
+    return;
   }
 
   //make a copy of the all food objects
-  const _foods = [...req.foods.recipes];
+  const _foods = [...req.foods];
 
   //locate the food by id
   const food = _foods.find((item) => {
