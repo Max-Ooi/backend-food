@@ -10,16 +10,16 @@ router.patch("/food/:id", (req, res) => {
     return;
   }
 
-  const { title, readyInMinutes, servings, dishTypes } = req.body;
-
   const indexOf = req.foods.findIndex((item) => {
     return item.id === id;
   });
 
   //check if the id exists
-  if (indexOf < 0) {
+  if (indexOf === -1) {
     res.send({ status: 0, reason: "id not found" });
   }
+
+  const { title, readyInMinutes, servings, dishTypes } = req.body;
 
   //update the values from the selected food object by id
 
